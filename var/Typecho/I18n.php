@@ -43,7 +43,7 @@ function _e() {
  * @return string
  */
 function _n($single, $plural, $number) {
-    return Typecho_I18n::ngettext($single, $plural, $number);
+    return str_replace('%d', $number, Typecho_I18n::ngettext($single, $plural, $number));
 }
 
 /**
@@ -73,13 +73,13 @@ class Typecho_I18n
      * 初始化语言文件
      *
      * @access private
-     * @return boolean
      */
     private static function init()
     {
         /** GetText支持 */
-        self::$_loaded = new Typecho_I18n_GetTextMulti(self::$_lang);
-        return true;
+        if (false === self::$_loaded && self::$_lang && file_exists(self::$_lang)) {
+            self::$_loaded = new Typecho_I18n_GetTextMulti(self::$_lang);
+        }
     }
 
     /**
@@ -91,7 +91,7 @@ class Typecho_I18n
      */
     public static function translate($string)
     {
-        self::$_lang && empty(self::$_loaded) && self::init();
+        self::init();
         return self::$_lang ? self::$_loaded->translate($string) : $string;
     }
 
@@ -105,7 +105,7 @@ class Typecho_I18n
      */
     public static function ngettext($single, $plural, $number)
     {
-        self::$_lang && empty(self::$_loaded) && self::init();
+        self::init();
         return self::$_lang ? self::$_loaded->ngettext($single, $plural, $number) : ($number > 1 ? $plural : $single);
     }
 

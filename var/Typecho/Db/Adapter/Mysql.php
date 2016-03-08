@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * Typecho Blog Platform
  *
@@ -54,6 +55,17 @@ class Typecho_Db_Adapter_Mysql implements Typecho_Db_Adapter
 
         /** 数据库异常 */
         throw new Typecho_Db_Adapter_Exception(@mysql_error($this->_dbLink));
+    }
+
+    /**
+     * 获取数据库版本 
+     * 
+     * @param mixed $handle
+     * @return string
+     */
+    public function getVersion($handle)
+    {
+        return 'ext:mysql ' . mysql_get_server_info($handle);
     }
 
     /**

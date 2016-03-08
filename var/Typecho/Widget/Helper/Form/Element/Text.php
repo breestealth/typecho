@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 文字输入表单项帮手
  *
@@ -47,6 +48,6 @@ class Typecho_Widget_Helper_Form_Element_Text extends Typecho_Widget_Helper_Form
      */
     protected function _value($value)
     {
-        $this->input->setAttribute('value', $value);
+        $this->input->setAttribute('value', htmlspecialchars($value));
     }
 }

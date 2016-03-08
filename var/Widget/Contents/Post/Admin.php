@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 文章管理列表
  *
@@ -34,14 +35,6 @@ class Widget_Contents_Post_Admin extends Widget_Abstract_Contents
      * @var integer
      */
     private $_total = false;
-
-    /**
-     * 分页大小
-     *
-     * @access private
-     * @var integer
-     */
-    private $pageSize;
 
     /**
      * 当前页
@@ -155,3 +148,4 @@ class Widget_Contents_Post_Admin extends Widget_Abstract_Contents
         $nav->render('&laquo;', '&raquo;');
     }
 }
+

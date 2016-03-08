@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 /**
  * 当前登录用户
@@ -63,7 +64,6 @@ class Widget_User extends Typecho_Widget
      * @param mixed $request request对象
      * @param mixed $response response对象
      * @param mixed $params 参数列表
-     * @return void
      */
     public function __construct($request, $response, $params = NULL)
     {
@@ -124,15 +124,25 @@ class Widget_User extends Typecho_Widget
         ->where((strpos($name, '@') ? 'mail' : 'name') . ' = ?', $name)
         ->limit(1));
 
+        if (empty($user)) {
+            return false;
+        }
+
         $hashValidate = $this->pluginHandle()->trigger($hashPluggable)->hashValidate($password, $user['password']);
         if (!$hashPluggable) {
-            $hashValidate = Typecho_Common::hashValidate($password, $user['password']);
+            if ('$P$' == substr($user['password'], 0, 3)) {
+                $hasher = new PasswordHash(8, true);
+                $hashValidate = $hasher->CheckPassword($password, $user['password']);
+            } else {
+                $hashValidate = Typecho_Common::hashValidate($password, $user['password']);
+            }
         }
 
         if ($user && $hashValidate) {
 
             if (!$temporarily) {
-                $authCode = sha1(Typecho_Common::randString(20));
+                $authCode = function_exists('openssl_random_pseudo_bytes') ?
+                    bin2hex(openssl_random_pseudo_bytes(16)) : sha1(Typecho_Common::randString(20));
                 $user['authCode'] = $authCode;
 
                 Typecho_Cookie::set('__typecho_uid', $user['uid'], $expire);
@@ -203,7 +213,7 @@ class Widget_User extends Typecho_Widget
      * 判断用户是否已经登录
      *
      * @access public
-     * @return void
+     * @return boolean
      */
     public function hasLogin()
     {
@@ -237,7 +247,7 @@ class Widget_User extends Typecho_Widget
      * @param string $group 用户组
      * @param boolean $return 是否为返回模式
      * @return boolean
-     * @throws TypechoWidgetException
+     * @throws Typecho_Widget_Exception
      */
     public function pass($group, $return = false)
     {

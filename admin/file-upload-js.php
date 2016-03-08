@@ -13,8 +13,8 @@ if (preg_match("/^([0-9]+)([a-z]{1,2})$/i", $phpMaxFilesize, $matches)) {
 }
 ?>
 
-<script src="<?php $options->adminUrl('js/moxie.js?v=' . $suffixVersion); ?>"></script>
-<script src="<?php $options->adminUrl('js/plupload.js?v=' . $suffixVersion); ?>"></script>
+<script src="<?php $options->adminStaticUrl('js', 'moxie.js?v=' . $suffixVersion); ?>"></script>
+<script src="<?php $options->adminStaticUrl('js', 'plupload.js?v=' . $suffixVersion); ?>"></script>
 <script>
 $(document).ready(function() {
     function updateAttacmentNumber () {
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     function fileUploadStart (file) {
         $('<li id="' + file.id + '" class="loading">'
-            + file.name + '</li>').prependTo('#file-list');
+            + file.name + '</li>').appendTo('#file-list');
     }
 
     function fileUploadError (error) {
@@ -88,12 +88,15 @@ $(document).ready(function() {
         if (exist.length > 0) {
             li = exist.removeClass('loading').html(fileError);
         } else {
-            li = $('<li>' + fileError + '<br />' + word + '</li>').prependTo('#file-list');
+            li = $('<li>' + fileError + '<br />' + word + '</li>').appendTo('#file-list');
         }
 
         li.effect('highlight', {color : '#FBC2C4'}, 2000, function () {
             $(this).remove();
         });
+
+        // fix issue #341
+        this.removeFile(file);
     }
 
     var completeFile = null;
@@ -120,11 +123,10 @@ $(document).ready(function() {
     $('#tab-files').bind('init', function () {
         var uploader = new plupload.Uploader({
             browse_button   :   $('.upload-file').get(0),
-            url             :   '<?php $options->index('/action/upload' 
+            url             :   '<?php $security->index('/action/upload'
                 . (isset($fileParentContent) ? '?cid=' . $fileParentContent->cid : '')); ?>',
-            runtimes        :   'html5,flash,silverlight,html4',
-            flash_swf_url   :   '<?php $options->adminUrl('js/Moxie.swf'); ?>',
-            silverlight_swf_url     :   '<?php $options->adminUrl('js/Moxie.xap'); ?>',
+            runtimes        :   'html5,flash,html4',
+            flash_swf_url   :   '<?php $options->adminStaticUrl('js', 'Moxie.swf'); ?>',
             drop_element    :   $('.upload-area').get(0),
             filters         :   {
                 max_file_size       :   '<?php echo $phpMaxFilesize ?>',
@@ -134,9 +136,9 @@ $(document).ready(function() {
 
             init            :   {
                 FilesAdded      :   function (up, files) {
-                    plupload.each(files, function(file) {
-                        fileUploadStart(file);
-                    });
+                    for (var i = 0; i < files.length; i ++) {
+                        fileUploadStart(files[i]);
+                    }
 
                     completeFile = null;
                     uploader.start();
@@ -154,18 +156,19 @@ $(document).ready(function() {
 
                         if (data) {
                             fileUploadComplete(file.id, data[0], data[1]);
+                            uploader.removeFile(file);
                             return;
                         }
                     }
 
-                    fileUploadError({
+                    fileUploadError.call(uploader, {
                         code : plupload.HTTP_ERROR,
                         file : file
                     });
                 },
 
                 Error           :   function (up, error) {
-                    fileUploadError(error);
+                    fileUploadError.call(uploader, error);
                 }
             }
         });
@@ -186,7 +189,7 @@ $(document).ready(function() {
         $('.delete', el).click(function () {
             if (confirm('<?php _e('确认要删除文件 %s 吗?'); ?>'.replace('%s', file))) {
                 var cid = $(this).parents('li').data('cid');
-                $.post('<?php $options->index('/action/contents-attachment-edit'); ?>',
+                $.post('<?php $security->index('/action/contents-attachment-edit'); ?>',
                     {'do' : 'delete', 'cid' : cid},
                     function () {
                         $(el).fadeOut(function () {

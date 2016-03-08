@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 多行文字域帮手
  *
@@ -46,6 +47,6 @@ class Typecho_Widget_Helper_Form_Element_Textarea extends Typecho_Widget_Helper_
      */
     protected function _value($value)
     {
-        $this->input->html($value);
+        $this->input->html(htmlspecialchars($value));
     }
 }

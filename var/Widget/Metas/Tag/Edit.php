@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 标签编辑
  *
@@ -124,8 +125,8 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
     public function form($action = NULL)
     {
         /** 构建表格 */
-        $form = new Typecho_Widget_Helper_Form(Typecho_Common::url('/action/metas-tag-edit', $this->options->index),
-        Typecho_Widget_Helper_Form::POST_METHOD);
+        $form = new Typecho_Widget_Helper_Form($this->security->getIndex('/action/metas-tag-edit'),
+            Typecho_Widget_Helper_Form::POST_METHOD);
 
         /** 标签名称 */
         $name = new Typecho_Widget_Helper_Form_Element_Text('name', NULL, NULL,
@@ -181,7 +182,9 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
             $name->addRule('required', _t('必须填写标签名称'));
             $name->addRule(array($this, 'nameExists'), _t('标签名称已经存在'));
             $name->addRule(array($this, 'nameToSlug'), _t('标签名称无法被转换为缩略名'));
+            $name->addRule('xssCheck', _t('请不要标签名称中使用特殊字符'));
             $slug->addRule(array($this, 'slugExists'), _t('缩略名已经存在'));
+            $slug->addRule('xssCheck', _t('请不要在缩略名中使用特殊字符'));
         }
 
         if ('update' == $action) {
@@ -264,7 +267,7 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
      */
     public function deleteTag()
     {
-        $tags = $this->request->filter('int')->mid;
+        $tags = $this->request->filter('int')->getArray('mid');
         $deleteCount = 0;
 
         if ($tags && is_array($tags)) {
@@ -303,9 +306,9 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
             $this->response->goBack();
         }
 
-        $tags = $this->request->filter('int')->mid;
+        $tags = $this->request->filter('int')->getArray('mid');
 
-        if ($tags && is_array($tags)) {
+        if ($tags) {
             $this->merge($merge, 'tag', $tags);
 
             /** 提示信息 */
@@ -326,8 +329,8 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
      */
     public function refreshTag()
     {
-        $tags = $this->request->filter('int')->mid;
-        if ($tags && is_array($tags)) {
+        $tags = $this->request->filter('int')->getArray('mid');
+        if ($tags) {
             foreach ($tags as $tag) {
                 $this->refreshCountByTypeAndStatus($tag, 'post', 'publish');
             } 
@@ -352,6 +355,7 @@ class Widget_Metas_Tag_Edit extends Widget_Abstract_Metas implements Widget_Inte
      */
     public function action()
     {
+        $this->security->protect();
         $this->on($this->request->is('do=insert'))->insertTag();
         $this->on($this->request->is('do=update'))->updateTag();
         $this->on($this->request->is('do=delete'))->deleteTag();

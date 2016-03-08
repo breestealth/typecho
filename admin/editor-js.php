@@ -1,12 +1,12 @@
 <?php if(!defined('__TYPECHO_ADMIN__')) exit; ?>
 <?php $content = !empty($post) ? $post : $page; if ($options->markdown): ?>
-<script src="<?php $options->adminUrl('js/pagedown.js?v=' . $suffixVersion); ?>"></script>
-<script src="<?php $options->adminUrl('js/pagedown-extra.js?v=' . $suffixVersion); ?>"></script>
-<script src="<?php $options->adminUrl('js/diff.js?v=' . $suffixVersion); ?>"></script>
+<script src="<?php $options->adminStaticUrl('js', 'pagedown.js?v=' . $suffixVersion); ?>"></script>
+<script src="<?php $options->adminStaticUrl('js', 'pagedown-extra.js?v=' . $suffixVersion); ?>"></script>
+<script src="<?php $options->adminStaticUrl('js', 'diff.js?v=' . $suffixVersion); ?>"></script>
 <script>
 $(document).ready(function () {
     var textarea = $('#text'),
-        toolbar = $('<div class="editor" id="wmd-button-bar" />').insertBefore(textarea.parent())
+        toolbar = $('<div class="editor" id="wmd-button-bar" />').insertBefore(textarea.parent()),
         preview = $('<div id="wmd-preview" class="wmd-hidetab" />').insertAfter('.editor');
 
     var options = {}, isMarkdown = <?php echo intval($content->isMarkdown || !$content->have()); ?>;
@@ -61,11 +61,11 @@ $(document).ready(function () {
         editor = new Markdown.Editor(converter, '', options),
         diffMatch = new diff_match_patch(), last = '', preview = $('#wmd-preview'),
         mark = '@mark' + Math.ceil(Math.random() * 100000000) + '@',
-        span = '<span class="diff" />';
-    
-    // 设置markdown
+        span = '<span class="diff" />',
+        cache = {};
+
     Markdown.Extra.init(converter, {
-        extensions  :   ["tables", "fenced_code_gfm", "def_list", "attr_list", "footnotes"]
+        'extensions' : ["tables", "fenced_code_gfm", "def_list", "attr_list", "footnotes", "strikethrough", "newlines"]
     });
 
     // 自动跟随
@@ -139,19 +139,71 @@ $(document).ready(function () {
             }
         }
 
+        // 替换img
+        html = html.replace(/<(img)\s+([^>]*)\s*src="([^"]+)"([^>]*)>/ig, function (all, tag, prefix, src, suffix) {
+            if (!cache[src]) {
+                cache[src] = false;
+            } else {
+                return '<span class="cache" data-width="' + cache[src][0] + '" data-height="' + cache[src][1] + '" '
+                    + 'style="background:url(' + src + ') no-repeat left top; width:'
+                    + cache[src][0] + 'px; height:' + cache[src][1] + 'px; display: inline-block; max-width: 100%;'
+                    + '-webkit-background-size: contain;-moz-background-size: contain;-o-background-size: contain;background-size: contain;" />';
+            }
+
+            return all;
+        });
+
+        // 替换block
+        html = html.replace(/<(iframe|embed)\s+([^>]*)>/ig, function (all, tag, src) {
+            if (src[src.length - 1] == '/') {
+                src = src.substring(0, src.length - 1);
+            }
+
+            return '<div style="background: #ddd; height: 40px; overflow: hidden; line-height: 40px; text-align: center; font-size: 12px; color: #777">'
+                + tag + ' : ' + $.trim(src) + '</div>';
+        });
+
         return html;
     });
 
+    function cacheResize() {
+        var t = $(this), w = parseInt(t.data('width')), h = parseInt(t.data('height')),
+            ow = t.width();
+
+        t.height(h * ow / w);
+    }
+
+    var to;
     editor.hooks.chain('onPreviewRefresh', function () {
         var diff = $('.diff', preview), scrolled = false;
 
+        if (to) {
+            clearTimeout(to);
+        }
+
         $('img', preview).load(function () {
+            var t = $(this), src = t.attr('src');
+
             if (scrolled) {
                 preview.scrollTo(diff, {
                     offset  :   - 50
                 });
             }
+
+            if (!!src && !cache[src]) {
+                cache[src] = [this.width, this.height];
+            }
         });
+
+        $('.cache', preview).resize(cacheResize).each(cacheResize);
+        
+        var changed = $('.diff', preview).parent();
+        if (!changed.is(preview)) {
+            changed.css('background-color', 'rgba(255,230,0,0.5)');
+            to = setTimeout(function () {
+                changed.css('background-color', 'transparent');
+            }, 4500);
+        }
 
         if (diff.length > 0) {
             var p = diff.position(), lh = diff.parent().css('line-height');

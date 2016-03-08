@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * Typecho Blog Platform
  *
@@ -60,18 +61,6 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
     }
 
     /**
-     * 以数组形式获取coid
-     *
-     * @access private
-     * @return array
-     */
-    private function getCoidAsArray()
-    {
-        $coid = $this->request->filter('int')->coid;
-        return $coid ? (is_array($coid) ? $coid : array($coid)) : array();
-    }
-
-    /**
      * 标记为待审核
      *
      * @access public
@@ -79,7 +68,7 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
      */
     public function waitingComment()
     {
-        $comments = $this->getCoidAsArray();
+        $comments = $this->request->filter('int')->getArray('coid');
         $updateRows = 0;
 
         foreach ($comments as $comment) {
@@ -104,7 +93,7 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
      */
     public function spamComment()
     {
-        $comments = $this->getCoidAsArray();
+        $comments = $this->request->filter('int')->getArray('coid');
         $updateRows = 0;
 
         foreach ($comments as $comment) {
@@ -129,7 +118,7 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
      */
     public function approvedComment()
     {
-        $comments = $this->getCoidAsArray();
+        $comments = $this->request->filter('int')->getArray('coid');
         $updateRows = 0;
 
         foreach ($comments as $comment) {
@@ -154,7 +143,7 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
      */
     public function deleteComment()
     {
-        $comments = $this->getCoidAsArray();
+        $comments = $this->request->filter('int')->getArray('coid');
         $deleteRows = 0;
 
         foreach ($comments as $coid) {
@@ -368,6 +357,7 @@ class Widget_Comments_Edit extends Widget_Abstract_Comments implements Widget_In
     public function action()
     {
         $this->user->pass('contributor');
+        $this->security->protect();
         $this->on($this->request->is('do=waiting'))->waitingComment();
         $this->on($this->request->is('do=spam'))->spamComment();
         $this->on($this->request->is('do=approved'))->approvedComment();

@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 描述性数据
  *
@@ -23,7 +24,7 @@ class Widget_Abstract_Metas extends Widget_Abstract
      * 锚点id
      *
      * @access protected
-     * @return void
+     * @return string
      */
     protected function ___theId()
     {
@@ -136,6 +137,21 @@ class Widget_Abstract_Metas extends Widget_Abstract
     }
 
     /**
+     * 获取最大排序
+     * 
+     * @param mixed $type 
+     * @param int $parent 
+     * @access public
+     * @return integer
+     */
+    public function getMaxOrder($type, $parent = 0)
+    {
+        return $this->db->fetchObject($this->db->select(array('MAX(order)' => 'maxOrder'))
+        ->from('table.metas')
+        ->where('type = ? AND parent = ?', 'category', $parent))->maxOrder;
+    }
+
+    /**
      * 对数据按照sort字段排序
      *
      * @access public
@@ -183,6 +199,7 @@ class Widget_Abstract_Metas extends Widget_Abstract
                     $contents[] = $content;
                 }
 
+                $this->update(array('parent' => $mid), $this->db->sql()->where('parent = ?', $meta));
                 unset($existsContents);
             }
         }
@@ -264,7 +281,7 @@ class Widget_Abstract_Metas extends Widget_Abstract
      * 根据内容的指定类别和状态更新相关meta的计数信息
      *
      * @access public
-     * @param Tint $mid meta id
+     * @param int $mid meta id
      * @param string $type 类别
      * @param string $status 状态
      * @return void

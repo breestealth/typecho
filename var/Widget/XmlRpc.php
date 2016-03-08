@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * Typecho Blog Platform
  *
@@ -510,7 +511,7 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
             $updateRows = $this->update($attachment, $this->db->sql()->where('cid = ?', $postId));
             return true;
         }
-        return $this->mwEditPost($blogId, $postId, $userName, $password, $content, $publish);
+        return $this->mwEditPost($blogId, $postId, $userName, $password, $content);
     }
 
     /**
@@ -594,7 +595,8 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
         /** 开始接受数据 */
         $input['name'] = $category['name'];
         $input['slug'] = Typecho_Common::slugName(empty($category['slug']) ? $category['name'] : $category['slug']);
-        $input['type'] = 'category';
+        $input['parent'] = isset($category['parent_id']) ? $category['parent_id'] :
+            (isset($category['parent']) ? $category['parent'] : 0);
         $input['description'] = isset($category['description']) ? $category['description'] : $category['name'];
         $input['do'] = 'insert';
 
@@ -968,7 +970,7 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
                 }
             
                 if (!$this->_wpOptions[$option]['readonly'] && isset($this->_wpOptions[$option]['option'])) {
-                    if ($db->query($db->update('table.options')
+                    if ($this->db->query($this->db->update('table.options')
                     ->rows(array('value' => $value))
                     ->where('name = ?', $this->_wpOptions[$option]['option'])) > 0) {
                         $struct[$option]['value'] = $value;
@@ -1630,7 +1632,7 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
         while ($categories->next()) {
             $categoryStructs[] = array(
                 'categoryId'            => $categories->mid,
-                'parentId'              => '0',
+                'parentId'              => $categories->parent,
                 'categoryName'          => $categories->name,
                 'categoryDescription'   => $categories->description,
                 'description'           => $categories->name,
@@ -1885,7 +1887,7 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
 
         $struct = array(
             'nickname'  => $this->user->screenName,
-            'userid'     => $this->user->uid,
+            'userid'    => $this->user->uid,
             'url'       => $this->user->url,
             'email'     => $this->user->mail,
             'lastname'  => '',
@@ -2043,33 +2045,6 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
      */
     public function pingbackPing($source, $target)
     {
-        /** 检查源地址是否存在*/
-        if (!($http = Typecho_Http_Client::get())) {
-            return new IXR_Error(16, _t('源地址服务器错误'));
-        }
-
-        try {
-
-            $http->setTimeout(5)->send($source);
-            $response = $http->getResponseBody();
-
-            if (200 == $http->getResponseStatus()) {
-
-                if (!$http->getResponseHeader('x-pingback')) {
-                    preg_match_all("/<link[^>]*rel=[\"']([^\"']*)[\"'][^>]*href=[\"']([^\"']*)[\"'][^>]*>/i", $response, $out);
-                    if (!isset($out[1]['pingback'])) {
-                        return new IXR_Error(50, _t('源地址不支持PingBack'));
-                    }
-                }
-
-            } else {
-                return new IXR_Error(16, _t('源地址服务器错误'));
-            }
-
-        } catch (Exception $e) {
-            return new IXR_Error(16, _t('源地址服务器错误'));
-        }
-
         /** 检查目标地址是否正确*/
         $pathInfo = Typecho_Common::url(substr($target, strlen($this->options->index)), '/');
         $post = Typecho_Router::match($pathInfo);
@@ -2089,6 +2064,32 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
                 $post->cid, $source, 'comment'))->num;
 
                 if ($pingNum <= 0) {
+                    /** 检查源地址是否存在*/
+                    if (!($http = Typecho_Http_Client::get())) {
+                        return new IXR_Error(16, _t('源地址服务器错误'));
+                    }
+
+                    try {
+
+                        $http->setTimeout(5)->send($source);
+                        $response = $http->getResponseBody();
+
+                        if (200 == $http->getResponseStatus()) {
+
+                            if (!$http->getResponseHeader('x-pingback')) {
+                                preg_match_all("/<link[^>]*rel=[\"']([^\"']*)[\"'][^>]*href=[\"']([^\"']*)[\"'][^>]*>/i", $response, $out);
+                                if (!isset($out[1]['pingback'])) {
+                                    return new IXR_Error(50, _t('源地址不支持PingBack'));
+                                }
+                            }
+
+                        } else {
+                            return new IXR_Error(16, _t('源地址服务器错误'));
+                        }
+
+                    } catch (Exception $e) {
+                        return new IXR_Error(16, _t('源地址服务器错误'));
+                    }
 
                     /** 现在开始插入以及邮件提示了 $response就是第一行请求时返回的数组*/
                     preg_match("/\<title\>([^<]*?)\<\/title\\>/is", $response, $matchTitle);
@@ -2176,14 +2177,6 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
         }
     }
 
-    public function log($value = '')
-    {
-        $fp = fopen("log.txt", "a+"); 
-        fwrite($fp, "[" . date('Y-m-d H:i:s') . "]\t" . $value . "\n");
-        fclose($fp);
-    }
-
-
     /**
      * 入口执行方法
      *
@@ -2192,9 +2185,6 @@ class Widget_XmlRpc extends Widget_Abstract_Contents implements Widget_Interface
      */
     public function action()
     {
-
-        //$this->log($GLOBALS['HTTP_RAW_POST_DATA']);
-
         if (isset($this->request->rsd)) {
             echo
 <<<EOF
@@ -2227,7 +2217,7 @@ EOF;
 
         <supportsCategoriesInline>Yes</supportsCategoriesInline>
         <supportsMultipleCategories>Yes</supportsMultipleCategories>
-        <supportsHierarchicalCategories>No</supportsHierarchicalCategories>
+        <supportsHierarchicalCategories>Yes</supportsHierarchicalCategories>
         <supportsNewCategories>Yes</supportsNewCategories>
         <supportsNewCategoriesInline>Yes</supportsNewCategoriesInline>
         <supportsCommentPolicy>Yes</supportsCommentPolicy>
@@ -2292,8 +2282,6 @@ EOF;
                 'wp.getMediaLibrary'        => array($this, 'wpGetMediaLibrary'),
                 'wp.getMediaItem'           => array($this, 'wpGetMediaItem'),
                 'wp.editPost'               => array($this, 'wpEditPost'),
-
-                
 
                 /** Blogger API */
                 'blogger.getUsersBlogs'     => array($this, 'bloggerGetUsersBlogs'),

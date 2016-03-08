@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* vim: set et sw=2 ts=2 sts=2 fdm=marker ff=unix fenc=utf8 */
 /**
 * Typecho 后台样式
@@ -70,7 +71,7 @@ a.button:hover, a.balloon-button:hover {
 /**
 * Forms
 */
-/* line 6, ../scss/_forms.scss */
+/* line 5, ../scss/_forms.scss */
 input[type=text], input[type=password], input[type=email],
 textarea {
   background: #FFF;
@@ -150,12 +151,10 @@ select {
 .btn, #ui-datepicker-div .ui-datepicker-current,
 #ui-datepicker-div .ui-datepicker-close {
   border: none;
-  background-color: #e9e9e6;
+  background-color: #E9E9E6;
   cursor: pointer;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   display: inline-block;
   padding: 0 12px;
@@ -166,9 +165,9 @@ select {
   /* line 15, ../scss/_buttons.scss */
   .btn:hover, #ui-datepicker-div .ui-datepicker-current:hover,
   #ui-datepicker-div .ui-datepicker-close:hover {
-    -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
     -o-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     background-color: #dbdbd6; }
   /* line 19, ../scss/_buttons.scss */
@@ -206,19 +205,17 @@ select {
 /* line 55, ../scss/_buttons.scss */
 .primary {
   border: none;
-  background-color: #467b96;
+  background-color: #467B96;
   cursor: pointer;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   color: #FFF; }
   /* line 15, ../scss/_buttons.scss */
   .primary:hover {
-    -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
     -o-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     background-color: #3c6a81; }
   /* line 19, ../scss/_buttons.scss */
@@ -236,19 +233,17 @@ select {
 /* line 64, ../scss/_buttons.scss */
 .btn-warn {
   border: none;
-  background-color: #b94a48;
+  background-color: #B94A48;
   cursor: pointer;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   color: #FFF; }
   /* line 15, ../scss/_buttons.scss */
   .btn-warn:hover {
-    -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
     -o-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     background-color: #a4403f; }
   /* line 19, ../scss/_buttons.scss */
@@ -259,7 +254,7 @@ select {
     background-color: #c1605e;
     cursor: default; }
 
-/* line 73, ../scss/_buttons.scss */
+/* line 69, ../scss/_buttons.scss */
 .btn-link,
 .btn-link:hover,
 .btn-link:focus,
@@ -311,10 +306,8 @@ select {
 /* line 6, ../scss/_messages.scss */
 .message {
   padding: 8px 10px;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px; }
 
 /* line 11, ../scss/_messages.scss */
@@ -361,10 +354,8 @@ select {
   text-align: center;
   font-size: 12px;
   color: #FFF;
-  -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -webkit-border-radius: 20px;
   border-radius: 20px; }
 
 /**
@@ -391,10 +382,8 @@ select {
 .typecho-pager a {
   display: block;
   padding: 0 10px;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px; }
 
 /* line 28, ../scss/_pagenavi.scss */
@@ -419,7 +408,7 @@ select {
 .typecho-head-nav a {
   color: #BBB; }
 
-/* line 13, ../scss/_header.scss */
+/* line 12, ../scss/_header.scss */
 .typecho-head-nav a:hover,
 .typecho-head-nav a:focus {
   color: #FFF;
@@ -453,7 +442,7 @@ select {
   line-height: 36px;
   color: #BBB; }
 
-/* line 48, ../scss/_header.scss */
+/* line 46, ../scss/_header.scss */
 #typecho-nav-list .parent a:hover,
 #typecho-nav-list .focus .parent a,
 #typecho-nav-list .root:hover .parent a {
@@ -491,7 +480,7 @@ select {
   height: 36px;
   line-height: 36px; }
 
-/* line 85, ../scss/_header.scss */
+/* line 84, ../scss/_header.scss */
 #typecho-nav-list .child li a:hover,
 #typecho-nav-list .child li a:focus {
   background: #292D33;
@@ -641,6 +630,10 @@ select {
 * 安装向导
 */
 /* line 190, ../scss/style.scss */
+.typecho-install {
+  padding-bottom: 2em; }
+
+/* line 193, ../scss/style.scss */
 .typecho-install-patch {
   margin-bottom: 2em;
   padding: 2em 0;
@@ -648,19 +641,19 @@ select {
   color: #FFF;
   text-align: center; }
 
-/* line 198, ../scss/style.scss */
+/* line 201, ../scss/style.scss */
 .typecho-install-patch ol {
   list-style: none;
   margin: 3em 0 1em;
   padding: 0;
   color: #999; }
 
-/* line 204, ../scss/style.scss */
+/* line 207, ../scss/style.scss */
 .typecho-install-patch li {
   display: inline-block;
   margin: 0 .8em; }
 
-/* line 208, ../scss/style.scss */
+/* line 211, ../scss/style.scss */
 .typecho-install-patch span {
   display: inline-block;
   margin-right: 5px;
@@ -671,65 +664,65 @@ select {
   text-align: center;
   border-radius: 2em; }
 
-/* line 218, ../scss/style.scss */
+/* line 221, ../scss/style.scss */
 .typecho-install-patch li.current {
   color: #FFF;
   font-weight: bold; }
 
-/* line 222, ../scss/style.scss */
+/* line 225, ../scss/style.scss */
 .typecho-install-patch li.current span {
   border-color: #FFF; }
 
 /**
 * 安装主体内容
 */
-/* line 231, ../scss/style.scss */
+/* line 234, ../scss/style.scss */
 .typecho-install .typecho-install-body input {
   width: 100%; }
 
-/* line 234, ../scss/style.scss */
+/* line 237, ../scss/style.scss */
 .typecho-install-body .typecho-option li {
   margin: 1em 0; }
 
 /**
 * 欢迎界面
 */
-/* line 243, ../scss/style.scss */
+/* line 246, ../scss/style.scss */
 #typecho-welcome {
   margin: 1em 0;
   padding: 1em 2em;
   background-color: #E9E9E6; }
 
-/* line 249, ../scss/style.scss */
+/* line 252, ../scss/style.scss */
 .welcome-board {
   color: #999;
   font-size: 1.15em; }
-  /* line 252, ../scss/style.scss */
+  /* line 255, ../scss/style.scss */
   .welcome-board em {
     color: #444;
     font-size: 2em;
     font-style: normal;
     font-family: Georgia, serif; }
 
-/* line 260, ../scss/style.scss */
+/* line 263, ../scss/style.scss */
 #start-link {
   margin-bottom: 25px;
   padding: 0 0 35px;
   border-bottom: 1px solid #ECECEC; }
-  /* line 264, ../scss/style.scss */
+  /* line 267, ../scss/style.scss */
   #start-link li {
     float: left;
     margin-right: 1.5em; }
-  /* line 268, ../scss/style.scss */
+  /* line 271, ../scss/style.scss */
   #start-link .balloon {
     margin-top: 2px; }
 
-/* line 274, ../scss/style.scss */
+/* line 277, ../scss/style.scss */
 .latest-link li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
-/* line 279, ../scss/style.scss */
+/* line 282, ../scss/style.scss */
 .latest-link span {
   display: inline-block;
   margin-right: 4px;
@@ -739,48 +732,48 @@ select {
   text-align: right;
   color: #999; }
 
-/* line 290, ../scss/style.scss */
+/* line 293, ../scss/style.scss */
 .update-check {
   font-size: 14px; }
 
 /**
 * 登录框
 */
-/* line 297, ../scss/style.scss */
+/* line 300, ../scss/style.scss */
 .typecho-login-wrap {
   display: table;
   margin: 0 auto;
   height: 100%; }
 
-/* line 302, ../scss/style.scss */
+/* line 305, ../scss/style.scss */
 .typecho-login {
   display: table-cell;
   padding: 30px 0 100px;
   width: 280px;
   text-align: center;
   vertical-align: middle; }
-  /* line 308, ../scss/style.scss */
+  /* line 311, ../scss/style.scss */
   .typecho-login h1 {
     margin: 0 0 1em; }
 
-/* line 313, ../scss/style.scss */
+/* line 316, ../scss/style.scss */
 .typecho-login .more-link {
   margin-top: 2em;
   color: #CCC; }
 
-/* line 317, ../scss/style.scss */
+/* line 320, ../scss/style.scss */
 .typecho-login .more-link a {
   margin: 0 3px; }
 
 /**
 * 标题
 */
-/* line 324, ../scss/style.scss */
+/* line 327, ../scss/style.scss */
 .typecho-page-title h2 {
   margin: 25px 0 10px;
   font-size: 1.28571em; }
 
-/* line 328, ../scss/style.scss */
+/* line 331, ../scss/style.scss */
 .typecho-page-title h2 a {
   margin-left: 10px;
   padding: 3px 8px;
@@ -788,7 +781,7 @@ select {
   font-size: .8em;
   border-radius: 2px; }
 
-/* line 336, ../scss/style.scss */
+/* line 339, ../scss/style.scss */
 .typecho-page-title h2 a:hover {
   text-decoration: none; }
 
@@ -798,30 +791,30 @@ select {
 /**
 * 主页主体
 */
-/* line 350, ../scss/style.scss */
+/* line 353, ../scss/style.scss */
 .typecho-dashboard ul {
   list-style: none;
   padding: 0; }
 
-/* line 354, ../scss/style.scss */
+/* line 357, ../scss/style.scss */
 .typecho-dashboard li {
   margin-bottom: 5px; }
 
 /**
 * 标签页
 */
-/* line 362, ../scss/style.scss */
+/* line 365, ../scss/style.scss */
 .typecho-option-tabs {
   list-style: none;
   margin: 1em 0 0;
   padding: 0;
   font-size: 13px;
   text-align: center; }
-  /* line 368, ../scss/style.scss */
+  /* line 371, ../scss/style.scss */
   .typecho-option-tabs.fix-tabs {
     margin-bottom: 1em; }
 
-/* line 373, ../scss/style.scss */
+/* line 376, ../scss/style.scss */
 .typecho-option-tabs a {
   display: block;
   margin-right: -1px;
@@ -830,39 +823,35 @@ select {
   height: 26px;
   line-height: 26px;
   color: #666;
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 384, ../scss/style.scss */
+/* line 387, ../scss/style.scss */
 .typecho-option-tabs a:hover {
   background-color: #E9E9E6;
   color: #666;
   text-decoration: none; }
 
-/* line 390, ../scss/style.scss */
+/* line 393, ../scss/style.scss */
 .typecho-option-tabs li {
   float: left; }
-  /* line 392, ../scss/style.scss */
-  .typecho-option-tabs li:first-child a {
-    -webkit-border-radius: 2px 0 0 2px;
-    -moz-border-radius: 2px 0 0 2px;
-    -ms-border-radius: 2px 0 0 2px;
-    -o-border-radius: 2px 0 0 2px;
-    border-radius: 2px 0 0 2px; }
   /* line 395, ../scss/style.scss */
+  .typecho-option-tabs li:first-child a {
+    -moz-border-radius: 2px 0 0 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px 0 0 2px; }
+  /* line 398, ../scss/style.scss */
   .typecho-option-tabs li:last-child a {
-    -webkit-border-radius: 0 2px 2px 0;
     -moz-border-radius: 0 2px 2px 0;
-    -ms-border-radius: 0 2px 2px 0;
-    -o-border-radius: 0 2px 2px 0;
+    -webkit-border-radius: 0;
     border-radius: 0 2px 2px 0; }
 
-/* line 400, ../scss/style.scss */
+/* line 403, ../scss/style.scss */
 .typecho-option-tabs.right {
   float: right; }
 
-/* line 405, ../scss/style.scss */
+/* line 407, ../scss/style.scss */
 .typecho-option-tabs li.current a,
 .typecho-option-tabs li.active a {
   background-color: #E9E9E6; }
@@ -873,42 +862,42 @@ select {
 /**
 * 列表页选项
 */
-/* line 420, ../scss/style.scss */
+/* line 423, ../scss/style.scss */
 .typecho-list-operate {
   margin: 1em 0; }
 
-/* line 426, ../scss/style.scss */
+/* line 427, ../scss/style.scss */
 .typecho-list-operate input,
 .typecho-list-operate button,
 .typecho-list-operate select {
   vertical-align: bottom; }
 
-/* line 430, ../scss/style.scss */
+/* line 433, ../scss/style.scss */
 .typecho-list-operate input[type="checkbox"] {
   vertical-align: text-top; }
 
-/* line 434, ../scss/style.scss */
+/* line 437, ../scss/style.scss */
 .typecho-list-operate .operate {
   float: left; }
 
-/* line 438, ../scss/style.scss */
+/* line 441, ../scss/style.scss */
 .typecho-list-operate .search {
   float: right; }
 
-/* line 443, ../scss/style.scss */
+/* line 445, ../scss/style.scss */
 .typecho-list-operate span.operate-delete, a.operate-delete,
 .typecho-list-operate span.operate-button-delete, a.operate-button-delete {
   color: #B94A48; }
 
-/* line 447, ../scss/style.scss */
+/* line 450, ../scss/style.scss */
 a.operate-edit {
   color: #007700; }
 
-/* line 451, ../scss/style.scss */
+/* line 454, ../scss/style.scss */
 a.operate-reply {
   color: #545c30; }
 
-/* line 455, ../scss/style.scss */
+/* line 458, ../scss/style.scss */
 .typecho-list-operate a:hover {
   text-decoration: none; }
 
@@ -916,74 +905,74 @@ a.operate-reply {
 * 列表表格
 */
 /** 增加表格标题 by 70 */
-/* line 463, ../scss/style.scss */
+/* line 466, ../scss/style.scss */
 .typecho-list-table-title {
   margin: 1em 0;
   color: #999;
   text-align: center; }
 
-/* line 468, ../scss/style.scss */
+/* line 471, ../scss/style.scss */
 .typecho-table-wrap {
   padding: 30px;
   background: #FFF; }
 
-/* line 472, ../scss/style.scss */
+/* line 475, ../scss/style.scss */
 .typecho-list-table {
   width: 100%; }
 
-/* line 476, ../scss/style.scss */
+/* line 479, ../scss/style.scss */
 .typecho-list-table.deactivate {
   color: #999; }
 
-/* line 480, ../scss/style.scss */
+/* line 483, ../scss/style.scss */
 .typecho-list-table .right {
   text-align: right; }
 
-/* line 484, ../scss/style.scss */
+/* line 487, ../scss/style.scss */
 .typecho-list-table th {
   padding: 0 10px 10px;
   border-bottom: 2px solid #F0F0EC;
   text-align: left; }
 
-/* line 490, ../scss/style.scss */
+/* line 493, ../scss/style.scss */
 .typecho-list-table td {
   padding: 10px;
   border-top: 1px solid #F0F0EC;
   word-break: break-all; }
 
-/* line 495, ../scss/style.scss */
+/* line 498, ../scss/style.scss */
 .typecho-list-table .status {
   margin-left: 5px;
   color: #999;
   font-size: .92857em;
   font-style: normal; }
 
-/* line 501, ../scss/style.scss */
+/* line 504, ../scss/style.scss */
 .typecho-list-table tbody tr:hover td {
   background-color: #F6F6F3; }
 
-/* line 505, ../scss/style.scss */
+/* line 508, ../scss/style.scss */
 .typecho-list-table tbody tr.checked td {
   background-color: #FFF9E8; }
 
-/* line 509, ../scss/style.scss */
+/* line 512, ../scss/style.scss */
 .warning {
   color: #B94A48; }
 
-/* line 514, ../scss/style.scss */
+/* line 517, ../scss/style.scss */
 .typecho-list-table tr td .hidden-by-mouse {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0; }
 
-/* line 518, ../scss/style.scss */
+/* line 521, ../scss/style.scss */
 .typecho-list-table tr:hover td .hidden-by-mouse {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1; }
 
 /**
 * 评论管理
 */
-/* line 527, ../scss/style.scss */
+/* line 530, ../scss/style.scss */
 .comment-reply-content {
   position: relative;
   margin: 1em 0;
@@ -991,7 +980,7 @@ a.operate-reply {
   border: 1px solid transparent;
   background-color: #F0F0EC; }
 
-/* line 534, ../scss/style.scss */
+/* line 537, ../scss/style.scss */
 .comment-reply-content:after {
   position: absolute;
   right: 1em;
@@ -999,24 +988,24 @@ a.operate-reply {
   border-color: #F0F0EC #F0F0EC transparent transparent;
   content: " "; }
 
-/* line 543, ../scss/style.scss */
+/* line 545, ../scss/style.scss */
 .comment-meta span,
 .comment-date {
   font-size: .92857em;
   color: #999; }
 
-/* line 548, ../scss/style.scss */
+/* line 551, ../scss/style.scss */
 .comment-action a, .comment-action span {
   margin-right: 4px; }
 
-/* line 550, ../scss/style.scss */
+/* line 553, ../scss/style.scss */
 .comment-edit label {
   display: block; }
 
 /**
 * 评论回复
 */
-/* line 558, ../scss/style.scss */
+/* line 561, ../scss/style.scss */
 #typecho-respond {
   padding: 10px;
   display: none; }
@@ -1024,55 +1013,55 @@ a.operate-reply {
 /**
 * 模板列表
 */
-/* line 576, ../scss/style.scss */
+/* line 579, ../scss/style.scss */
 .typecho-theme-list img {
   margin: 1em 0;
   max-width: 100%;
   max-height: 240px; }
 
-/* line 582, ../scss/style.scss */
+/* line 585, ../scss/style.scss */
 .typecho-theme-list cite {
   font-style: normal;
   color: #999; }
 
-/* line 587, ../scss/style.scss */
+/* line 590, ../scss/style.scss */
 .typecho-theme-list tbody tr.current td {
   background-color: #FFF9E8; }
 
 /**
 * 后台配置项
 */
-/* line 596, ../scss/style.scss */
+/* line 599, ../scss/style.scss */
 .typecho-page-main .typecho-option input.text {
   width: 100%; }
 
-/* line 600, ../scss/style.scss */
+/* line 603, ../scss/style.scss */
 .typecho-page-main .typecho-option input.num {
   width: 40px; }
 
-/* line 604, ../scss/style.scss */
+/* line 607, ../scss/style.scss */
 .typecho-page-main .typecho-option textarea {
   width: 100%;
   height: 100px; }
 
-/* line 609, ../scss/style.scss */
+/* line 612, ../scss/style.scss */
 .typecho-page-main .typecho-option .multiline {
   display: block;
   margin: .3em 0; }
-  /* line 612, ../scss/style.scss */
+  /* line 615, ../scss/style.scss */
   .typecho-page-main .typecho-option .multiline.hidden {
     display: none; }
 
 /**
 * 编辑模板
 */
-/* line 621, ../scss/style.scss */
+/* line 624, ../scss/style.scss */
 .typecho-select-theme {
   height: 25px;
   line-height: 25px;
   margin: 15px 0px; }
 
-/* line 627, ../scss/style.scss */
+/* line 630, ../scss/style.scss */
 .typecho-select-theme h5 {
   color: #E47E00;
   font-weight: bold;
@@ -1081,32 +1070,32 @@ a.operate-reply {
   width: 120px;
   margin-right: 10px; }
 
-/* line 636, ../scss/style.scss */
+/* line 639, ../scss/style.scss */
 .typecho-select-theme select {
   width: 150px; }
 
 /**
 * 编辑模板（编辑详情）
 */
-/* line 644, ../scss/style.scss */
+/* line 647, ../scss/style.scss */
 .typecho-edit-theme ul {
   list-style: none;
   margin: 0;
   padding: 0; }
 
-/* line 650, ../scss/style.scss */
+/* line 653, ../scss/style.scss */
 .typecho-edit-theme li {
   padding: 3px 10px; }
 
-/* line 654, ../scss/style.scss */
+/* line 657, ../scss/style.scss */
 .typecho-edit-theme .current {
   background-color: #E6E6E3; }
 
-/* line 657, ../scss/style.scss */
+/* line 660, ../scss/style.scss */
 .typecho-edit-theme .current a {
   color: #444; }
 
-/* line 661, ../scss/style.scss */
+/* line 664, ../scss/style.scss */
 .typecho-edit-theme textarea {
   font-size: .92857em;
   line-height: 1.2;
@@ -1115,128 +1104,131 @@ a.operate-reply {
 /**
 * 编写页面
 */
-/* line 671, ../scss/style.scss */
+/* line 674, ../scss/style.scss */
 .typecho-post-area .edit-draft-notice {
   color: #999;
   font-size: .92857em; }
 
-/* line 675, ../scss/style.scss */
+/* line 678, ../scss/style.scss */
 .typecho-post-area .edit-draft-notice a {
   color: #B94A48; }
 
-/* line 677, ../scss/style.scss */
+/* line 680, ../scss/style.scss */
 .typecho-post-area .typecho-label {
   display: block;
   margin: 1em 0 -0.5em;
   font-weight: bold; }
 
-/* line 683, ../scss/style.scss */
+/* line 686, ../scss/style.scss */
 .typecho-post-area #auto-save-message {
   display: block;
   margin-top: 0.5em;
   color: #999;
   font-size: .92857em; }
 
-/* line 690, ../scss/style.scss */
+/* line 693, ../scss/style.scss */
 .typecho-post-area .submit .right button {
   margin-left: 5px; }
 
-/* line 694, ../scss/style.scss */
+/* line 697, ../scss/style.scss */
 .typecho-post-area .right {
   float: right;
   padding-left: 24px; }
 
-/* line 699, ../scss/style.scss */
+/* line 702, ../scss/style.scss */
 .typecho-post-area .left {
   float: left; }
 
-/* line 706, ../scss/style.scss */
+/* line 709, ../scss/style.scss */
 .typecho-post-area .out-date {
   border: 1px solid #D3DBB3;
   padding: 3px;
   background: #fff; }
 
-/* line 712, ../scss/style.scss */
+/* line 715, ../scss/style.scss */
 .typecho-post-area input.title {
   font-size: 1.17em;
   font-weight: bold; }
 
-/* line 716, ../scss/style.scss */
+/* line 719, ../scss/style.scss */
 .typecho-post-area .url-slug {
   margin-top: -0.5em;
   color: #AAA;
   font-size: .92857em;
   word-break: break-word; }
 
-/* line 722, ../scss/style.scss */
+/* line 725, ../scss/style.scss */
 .typecho-post-area #slug {
   padding: 2px;
   border: none;
   background: #FFFBCC;
   color: #666; }
 
-/* line 729, ../scss/style.scss */
+/* line 732, ../scss/style.scss */
 .typecho-post-area #text {
   resize: none; }
 
-/* line 733, ../scss/style.scss */
+/* line 736, ../scss/style.scss */
 #advance-panel {
   display: none; }
 
-/* line 737, ../scss/style.scss */
+/* line 740, ../scss/style.scss */
 #custom-field {
   margin: 1em 0;
   padding: 10px 15px;
   background: #FFF; }
-  /* line 742, ../scss/style.scss */
+  /* line 745, ../scss/style.scss */
   #custom-field.fold table, #custom-field.fold .description {
     display: none; }
-  /* line 745, ../scss/style.scss */
+  /* line 748, ../scss/style.scss */
   #custom-field .description {
     margin-top: 10px;
     text-align: right; }
-    /* line 748, ../scss/style.scss */
+    /* line 751, ../scss/style.scss */
     #custom-field .description button {
       float: left; }
-  /* line 753, ../scss/style.scss */
+  /* line 756, ../scss/style.scss */
+  #custom-field p.description {
+    text-align: left; }
+  /* line 760, ../scss/style.scss */
   #custom-field .typecho-label {
     margin: 0; }
-    /* line 755, ../scss/style.scss */
+    /* line 762, ../scss/style.scss */
     #custom-field .typecho-label a {
       display: block;
       color: #444; }
-      /* line 758, ../scss/style.scss */
+      /* line 765, ../scss/style.scss */
       #custom-field .typecho-label a:hover {
         color: #467B96;
         text-decoration: none; }
-  /* line 764, ../scss/style.scss */
+  /* line 771, ../scss/style.scss */
   #custom-field table {
     margin-top: 10px; }
-  /* line 767, ../scss/style.scss */
+  /* line 774, ../scss/style.scss */
   #custom-field td {
     padding: 10px 5px;
     font-size: .92857em;
     border-bottom: 1px solid #F0F0EC;
     vertical-align: top; }
-    /* line 772, ../scss/style.scss */
+    /* line 779, ../scss/style.scss */
     #custom-field td label {
       font-size: 1em;
       font-weight: normal; }
-  /* line 777, ../scss/style.scss */
+  /* line 784, ../scss/style.scss */
   #custom-field select {
     height: 27px; }
 
-/* line 780, ../scss/style.scss */
+/* line 787, ../scss/style.scss */
 .typecho-post-area .is-draft {
   background: #FFF1A8; }
 
-/* line 784, ../scss/style.scss */
+/* line 791, ../scss/style.scss */
 .typecho-post-option .description {
   margin-top: -0.5em;
   color: #999;
   font-size: .92857em; }
 
-/* line 790, ../scss/style.scss */
+/* line 797, ../scss/style.scss */
 .category-option ul {
   list-style: none;
   border: 1px solid #D9D9D6;
@@ -1246,11 +1238,11 @@ a.operate-reply {
   background-color: #FFF;
   border-radius: 2px; }
 
-/* line 799, ../scss/style.scss */
+/* line 806, ../scss/style.scss */
 .category-option li {
   margin: 3px 0; }
 
-/* line 804, ../scss/style.scss */
+/* line 810, ../scss/style.scss */
 .visibility-option ul,
 .allow-option ul {
   list-style: none;
@@ -1259,61 +1251,61 @@ a.operate-reply {
 /**
 * 标签列表
 */
-/* line 814, ../scss/style.scss */
+/* line 821, ../scss/style.scss */
 .typecho-page-main ul.tag-list {
   list-style: none;
   margin: 0;
   padding: 20px;
   background-color: #FFF; }
 
-/* line 821, ../scss/style.scss */
+/* line 828, ../scss/style.scss */
 .typecho-page-main ul.tag-list li {
   display: inline-block;
   margin: 0 0 5px 0;
   padding: 5px 5px 5px 10px;
   cursor: pointer; }
 
-/* line 827, ../scss/style.scss */
+/* line 834, ../scss/style.scss */
 .typecho-page-main ul.tag-list li:hover {
   background-color: #E9E9E6; }
 
-/* line 831, ../scss/style.scss */
+/* line 838, ../scss/style.scss */
 .typecho-page-main ul.tag-list li input {
   display: none; }
 
-/* line 836, ../scss/style.scss */
+/* line 843, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.checked {
   background-color: #FFFBCC; }
 
-/* line 840, ../scss/style.scss */
+/* line 847, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.size-5 {
   font-size: 1em; }
 
-/* line 841, ../scss/style.scss */
+/* line 848, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.size-10 {
   font-size: 1.2em; }
 
-/* line 842, ../scss/style.scss */
+/* line 849, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.size-20 {
   font-size: 1.4em; }
 
-/* line 843, ../scss/style.scss */
+/* line 850, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.size-30 {
   font-size: 1.6em; }
 
-/* line 844, ../scss/style.scss */
+/* line 851, ../scss/style.scss */
 .typecho-page-main ul.tag-list li.size-0 {
   font-size: 1.8em; }
 
-/* line 846, ../scss/style.scss */
+/* line 853, ../scss/style.scss */
 .typecho-page-main .tag-edit-link {
   visibility: hidden; }
 
-/* line 847, ../scss/style.scss */
+/* line 854, ../scss/style.scss */
 .typecho-page-main li:hover .tag-edit-link {
   visibility: visible; }
 
-/* line 849, ../scss/style.scss */
+/* line 856, ../scss/style.scss */
 .typecho-attachment-photo {
   border: 1px solid #E6E6E3;
   max-width: 100%; }
@@ -1321,22 +1313,22 @@ a.operate-reply {
 /*
 * Upload
 */
-/* line 858, ../scss/style.scss */
+/* line 865, ../scss/style.scss */
 #upload-panel {
   border: 1px dashed #D9D9D6;
   background-color: #FFF;
   color: #999;
   font-size: .92857em; }
-  /* line 863, ../scss/style.scss */
+  /* line 870, ../scss/style.scss */
   #upload-panel.drag {
     background-color: #FFFBCC; }
 
-/* line 868, ../scss/style.scss */
+/* line 875, ../scss/style.scss */
 .upload-area {
   padding: 15px;
   text-align: center; }
 
-/* line 873, ../scss/style.scss */
+/* line 880, ../scss/style.scss */
 #file-list {
   list-style: none;
   margin: 0 10px;
@@ -1344,40 +1336,40 @@ a.operate-reply {
   max-height: 450px;
   overflow: auto;
   word-break: break-all; }
-  /* line 881, ../scss/style.scss */
+  /* line 887, ../scss/style.scss */
   #file-list li,
   #file-list .insert {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; }
-  /* line 886, ../scss/style.scss */
+  /* line 893, ../scss/style.scss */
   #file-list li {
     padding: 8px 0;
     border-top: 1px dashed #D9D9D6; }
-  /* line 890, ../scss/style.scss */
+  /* line 897, ../scss/style.scss */
   #file-list .insert {
     display: block;
     max-width: 100%; }
-  /* line 894, ../scss/style.scss */
+  /* line 901, ../scss/style.scss */
   #file-list .file {
     margin-left: 5px; }
-  /* line 897, ../scss/style.scss */
+  /* line 904, ../scss/style.scss */
   #file-list .info {
     text-transform: uppercase; }
 
-/* line 902, ../scss/style.scss */
+/* line 909, ../scss/style.scss */
 #btn-fullscreen-upload {
   visibility: hidden; }
 
 /**
 * 附件管理
 */
-/* line 910, ../scss/style.scss */
+/* line 917, ../scss/style.scss */
 .edit-media button {
   margin-right: 6px; }
 
 /* 拖动调整 textarea 大小 */
-/* line 913, ../scss/style.scss */
+/* line 920, ../scss/style.scss */
 .resize {
   display: block;
   margin: 2px auto 0;
@@ -1386,14 +1378,14 @@ a.operate-reply {
   border-width: 1px 0;
   width: 60px;
   cursor: row-resize; }
-  /* line 921, ../scss/style.scss */
+  /* line 928, ../scss/style.scss */
   .resize i {
     display: block;
     height: 1px;
     background-color: #D9D9D6; }
 
 /* 拖动排序 */
-/* line 929, ../scss/style.scss */
+/* line 936, ../scss/style.scss */
 .tDnD_whileDrag {
   background-color: #FFFBCC; }
 
@@ -1403,136 +1395,201 @@ a.operate-reply {
 /**
  * icons
  */
-/* line 8, ../scss/_icons.scss */
+/* line 29, ../scss/_icons.scss */
 .i-edit, .i-delete, .i-exlink, .mime-office, .mime-text, .mime-image, .mime-html, .mime-archive, .mime-application, .mime-audio, .mime-script, .mime-video, .mime-unknow, .i-upload, .i-upload-active {
   display: inline-block;
   vertical-align: text-bottom;
-  background: url('../img/icons-sba2b1299ac.png') no-repeat;
-  text-indent: -9999em; }
-  /* line 13, ../scss/_icons.scss */
+  text-indent: -9999em;
+  background-image: url('../img/icons-s0c4f1c5ae6.png');
+  background-repeat: no-repeat; }
+  /* line 35, ../scss/_icons.scss */
   .i-edit:hover, .i-delete:hover, .i-exlink:hover, .mime-office:hover, .mime-text:hover, .mime-image:hover, .mime-html:hover, .mime-archive:hover, .mime-application:hover, .mime-audio:hover, .mime-script:hover, .mime-video:hover, .mime-unknow:hover, .i-upload:hover, .i-upload-active:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
     opacity: 0.75; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 29, ../scss/_icons.scss */
+    .i-edit, .i-delete, .i-exlink, .mime-office, .mime-text, .mime-image, .mime-html, .mime-archive, .mime-application, .mime-audio, .mime-script, .mime-video, .mime-unknow, .i-upload, .i-upload-active {
+      -moz-background-size: auto 256px;
+      -o-background-size: auto 256px;
+      -webkit-background-size: auto 256px;
+      background-size: auto 256px;
+      background-image: url('../img/icons-2x-s481937020b.png'); } }
 
-/* line 18, ../scss/_icons.scss */
+/* line 47, ../scss/_icons.scss */
 .i-edit, .i-delete, .i-exlink, .mime-office, .mime-text, .mime-image, .mime-html, .mime-archive, .mime-application, .mime-audio, .mime-script, .mime-video, .mime-unknow {
   width: 16px;
   height: 16px; }
 
-/* line 24, ../scss/_icons.scss */
+/* line 53, ../scss/_icons.scss */
 .i-upload, .i-upload-active {
   width: 24px;
   height: 24px; }
 
-/* line 30, ../scss/_icons.scss */
+/* line 59, ../scss/_icons.scss */
 .i-edit {
-  background-position: 0 -80px; }
+  background-position: 0 -16px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 59, ../scss/_icons.scss */
+    .i-edit {
+      background-position: 0 -16px; } }
 
-/* line 34, ../scss/_icons.scss */
+/* line 63, ../scss/_icons.scss */
 .i-delete {
-  background-position: 0 -64px; }
-
-/* line 42, ../scss/_icons.scss */
-.i-upload {
-  background-position: 0 -24px; }
-
-/* line 47, ../scss/_icons.scss */
-.i-upload-active {
   background-position: 0 0; }
 
-/* line 53, ../scss/_icons.scss */
+/* line 71, ../scss/_icons.scss */
+.i-upload {
+  background-position: 0 -72px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 71, ../scss/_icons.scss */
+    .i-upload {
+      background-position: 0 -72px; } }
+
+/* line 76, ../scss/_icons.scss */
+.i-upload-active {
+  background-position: 0 -48px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 76, ../scss/_icons.scss */
+    .i-upload-active {
+      background-position: 0 -48px; } }
+
+/* line 82, ../scss/_icons.scss */
 .i-caret-up, .i-caret-down, .i-caret-left, .i-caret-right {
   display: inline-block;
   border-style: solid;
   border-color: transparent transparent #BBB transparent;
   border-width: 3px 4px 5px; }
 
-/* line 59, ../scss/_icons.scss */
+/* line 88, ../scss/_icons.scss */
 .i-caret-down {
   border-color: #BBB transparent transparent transparent;
   border-width: 5px 4px 3px; }
 
-/* line 63, ../scss/_icons.scss */
+/* line 92, ../scss/_icons.scss */
 .i-caret-left {
   border-color: transparent #BBB transparent transparent;
   border-width: 4px 5px 4px 3px; }
 
-/* line 67, ../scss/_icons.scss */
+/* line 96, ../scss/_icons.scss */
 .i-caret-right {
   border-color: transparent transparent transparent #BBB;
   border-width: 4px 3px 4px 5px; }
 
-/* line 72, ../scss/_icons.scss */
+/* line 101, ../scss/_icons.scss */
 .i-exlink {
-  background-position: 0 -48px; }
+  background-position: 0 -32px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 101, ../scss/_icons.scss */
+    .i-exlink {
+      background-position: 0 -32px; } }
 
 /* 文件类型图标 */
-/* line 80, ../scss/_icons.scss */
+/* line 109, ../scss/_icons.scss */
 .mime-office {
-  background-position: 0 -128px; }
+  background-position: 0 -176px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 109, ../scss/_icons.scss */
+    .mime-office {
+      background-position: 0 -176px; } }
 
-/* line 85, ../scss/_icons.scss */
+/* line 114, ../scss/_icons.scss */
 .mime-text {
   background-position: 0 -208px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 114, ../scss/_icons.scss */
+    .mime-text {
+      background-position: 0 -208px; } }
 
-/* line 90, ../scss/_icons.scss */
+/* line 119, ../scss/_icons.scss */
 .mime-image {
-  background-position: 0 -96px; }
+  background-position: 0 -160px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 119, ../scss/_icons.scss */
+    .mime-image {
+      background-position: 0 -160px; } }
 
-/* line 95, ../scss/_icons.scss */
+/* line 124, ../scss/_icons.scss */
 .mime-html {
   background-position: 0 -144px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 124, ../scss/_icons.scss */
+    .mime-html {
+      background-position: 0 -144px; } }
 
-/* line 100, ../scss/_icons.scss */
+/* line 129, ../scss/_icons.scss */
 .mime-archive {
-  background-position: 0 -224px; }
-
-/* line 105, ../scss/_icons.scss */
-.mime-application {
-  background-position: 0 -160px; }
-
-/* line 110, ../scss/_icons.scss */
-.mime-audio {
-  background-position: 0 -240px; }
-
-/* line 115, ../scss/_icons.scss */
-.mime-script {
-  background-position: 0 -176px; }
-
-/* line 120, ../scss/_icons.scss */
-.mime-video {
   background-position: 0 -112px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 129, ../scss/_icons.scss */
+    .mime-archive {
+      background-position: 0 -112px; } }
 
-/* line 125, ../scss/_icons.scss */
-.mime-unknow {
+/* line 134, ../scss/_icons.scss */
+.mime-application {
+  background-position: 0 -96px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 134, ../scss/_icons.scss */
+    .mime-application {
+      background-position: 0 -96px; } }
+
+/* line 139, ../scss/_icons.scss */
+.mime-audio {
+  background-position: 0 -128px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 139, ../scss/_icons.scss */
+    .mime-audio {
+      background-position: 0 -128px; } }
+
+/* line 144, ../scss/_icons.scss */
+.mime-script {
   background-position: 0 -192px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 144, ../scss/_icons.scss */
+    .mime-script {
+      background-position: 0 -192px; } }
+
+/* line 149, ../scss/_icons.scss */
+.mime-video {
+  background-position: 0 -240px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 149, ../scss/_icons.scss */
+    .mime-video {
+      background-position: 0 -240px; } }
+
+/* line 154, ../scss/_icons.scss */
+.mime-unknow {
+  background-position: 0 -224px; }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* line 154, ../scss/_icons.scss */
+    .mime-unknow {
+      background-position: 0 -224px; } }
 
 /* Logo 图标 */
-/* line 132, ../scss/_icons.scss */
+/* line 161, ../scss/_icons.scss */
 .i-logo, .i-logo-s {
   width: 169px;
   height: 40px;
   display: inline-block;
   background: url("../img/typecho-logo.svg") no-repeat;
   text-indent: -9999em;
-  -webkit-background-size: auto 40px;
   -moz-background-size: auto 40px;
   -o-background-size: auto 40px;
+  -webkit-background-size: auto 40px;
   background-size: auto 40px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=15);
   opacity: 0.15; }
-  /* line 140, ../scss/_icons.scss */
+  /* line 169, ../scss/_icons.scss */
   .i-logo:hover, .i-logo-s:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
     opacity: 0.2; }
 
-/* line 144, ../scss/_icons.scss */
+/* line 173, ../scss/_icons.scss */
 .i-logo-s {
   width: 26px;
   height: 26px;
-  -webkit-background-size: auto 26px;
   -moz-background-size: auto 26px;
   -o-background-size: auto 26px;
+  -webkit-background-size: auto 26px;
   background-size: auto 26px; }
 
 /*
@@ -1556,10 +1613,8 @@ a.operate-reply {
     padding: 3px;
     cursor: pointer;
     vertical-align: middle;
-    -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
+    -webkit-border-radius: 2px;
     border-radius: 2px; }
     /* line 22, ../scss/components/_editor.scss */
     .wmd-button-row li:hover {
@@ -1580,40 +1635,48 @@ a.operate-reply {
   height: 20px;
   background: transparent url(../img/editor.png) no-repeat; }
 
-/* line 44, ../scss/components/_editor.scss */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* line 46, ../scss/components/_editor.scss */
+  #wmd-button-row span {
+    background-image: url(../img/editor@2x.png);
+    -moz-background-size: 320px auto;
+    -o-background-size: 320px auto;
+    -webkit-background-size: 320px auto;
+    background-size: 320px auto; } }
+/* line 53, ../scss/components/_editor.scss */
 .wmd-edittab {
   float: right;
   margin-top: 3px;
   font-size: .92857em; }
-  /* line 48, ../scss/components/_editor.scss */
+  /* line 57, ../scss/components/_editor.scss */
   .wmd-edittab a {
     display: inline-block;
     padding: 0 8px;
     margin-left: 5px;
     height: 20px;
     line-height: 20px; }
-    /* line 54, ../scss/components/_editor.scss */
+    /* line 63, ../scss/components/_editor.scss */
     .wmd-edittab a:hover {
       text-decoration: none; }
-    /* line 57, ../scss/components/_editor.scss */
+    /* line 66, ../scss/components/_editor.scss */
     .wmd-edittab a.active {
       background: #E9E9E6;
       color: #999; }
 
-/* line 65, ../scss/components/_editor.scss */
+/* line 74, ../scss/components/_editor.scss */
 .wmd-hidetab {
   display: none; }
 
-/* line 69, ../scss/components/_editor.scss */
+/* line 78, ../scss/components/_editor.scss */
 .wmd-visualhide {
   visibility: hidden; }
 
 /* 对话框 */
-/* line 74, ../scss/components/_editor.scss */
+/* line 83, ../scss/components/_editor.scss */
 .wmd-prompt-background {
   background-color: #000; }
 
-/* line 77, ../scss/components/_editor.scss */
+/* line 86, ../scss/components/_editor.scss */
 .wmd-prompt-dialog {
   position: fixed;
   z-index: 1001;
@@ -1624,64 +1687,62 @@ a.operate-reply {
   padding: 20px;
   width: 360px;
   background: #F6F6F3; }
-  /* line 88, ../scss/components/_editor.scss */
+  /* line 97, ../scss/components/_editor.scss */
   .wmd-prompt-dialog p {
     margin: 0 0 5px; }
-  /* line 89, ../scss/components/_editor.scss */
+  /* line 98, ../scss/components/_editor.scss */
   .wmd-prompt-dialog form {
     margin-top: 10px; }
-  /* line 90, ../scss/components/_editor.scss */
+  /* line 99, ../scss/components/_editor.scss */
   .wmd-prompt-dialog input[type="text"] {
     margin-bottom: 10px;
     width: 100%; }
-  /* line 94, ../scss/components/_editor.scss */
+  /* line 103, ../scss/components/_editor.scss */
   .wmd-prompt-dialog button {
     margin-right: 10px; }
 
 /* 预览 */
-/* line 98, ../scss/components/_editor.scss */
+/* line 107, ../scss/components/_editor.scss */
 #wmd-preview {
   background: #FFF;
   margin: 1em 0;
   padding: 0 15px;
   word-wrap: break-word;
   overflow: auto;
-  -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px; }
-  /* line 105, ../scss/components/_editor.scss */
+  /* line 114, ../scss/components/_editor.scss */
   #wmd-preview img {
     max-width: 100%; }
-  /* line 106, ../scss/components/_editor.scss */
+  /* line 115, ../scss/components/_editor.scss */
   #wmd-preview code, #wmd-preview pre {
     padding: 2px 4px;
     background: #F3F3F0;
     font-size: .92857em; }
-  /* line 111, ../scss/components/_editor.scss */
+  /* line 120, ../scss/components/_editor.scss */
   #wmd-preview code {
     color: #C13; }
-  /* line 112, ../scss/components/_editor.scss */
+  /* line 121, ../scss/components/_editor.scss */
   #wmd-preview pre {
     padding: 1em; }
-    /* line 114, ../scss/components/_editor.scss */
+    /* line 123, ../scss/components/_editor.scss */
     #wmd-preview pre code {
       padding: 0;
       color: #444; }
-  /* line 119, ../scss/components/_editor.scss */
+  /* line 128, ../scss/components/_editor.scss */
   #wmd-preview blockquote {
     margin: 1em 1.5em;
     padding-left: 1.5em;
     border-left: 4px solid #E9E9E6;
     color: #777; }
-  /* line 125, ../scss/components/_editor.scss */
+  /* line 134, ../scss/components/_editor.scss */
   #wmd-preview hr {
     margin: 2em auto;
     width: 100px;
     border: 1px solid #E9E9E6;
     border-width: 2px 0 0 0; }
-  /* line 131, ../scss/components/_editor.scss */
+  /* line 140, ../scss/components/_editor.scss */
   #wmd-preview .summary:after {
     display: block;
     margin: 2em 0;
@@ -1691,36 +1752,55 @@ a.operate-reply {
     text-align: center;
     content: "- more -"; }
 
+/* 上传面板动画效果 */
+@keyframes fullscreen-upload {
+  0% {
+    right: -280px; }
+  100% {
+    right: -1px; } }
+@-moz-keyframes fullscreen-upload {
+  0% {
+    right: -280px; }
+  100% {
+    right: -1px; } }
+@-webkit-keyframes fullscreen-upload {
+  0% {
+    right: -280px; }
+  100% {
+    right: -1px; } }
+@-o-keyframes fullscreen-upload {
+  0% {
+    right: -280px; }
+  100% {
+    right: -1px; } }
 /* 编辑器全屏 */
-/* line 144, ../scss/components/_editor.scss */
+/* line 174, ../scss/components/_editor.scss */
 .fullscreen #wmd-button-bar, .fullscreen #text, .fullscreen #wmd-preview, .fullscreen .submit {
   position: absolute;
   top: 0;
   width: 50%;
   background: #FFF;
   z-index: 999;
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
+  -webkit-border-radius: 0;
   border-radius: 0; }
-/* line 154, ../scss/components/_editor.scss */
+/* line 184, ../scss/components/_editor.scss */
 .fullscreen #wmd-button-bar {
   left: 0;
   padding: 13px 20px;
   border-bottom: 1px solid #F3F3F0;
   z-index: 1000; }
-/* line 160, ../scss/components/_editor.scss */
+/* line 190, ../scss/components/_editor.scss */
 .fullscreen #text {
   top: 53px;
   left: 0;
   padding: 20px;
   border: none;
   outline: none; }
-/* line 167, ../scss/components/_editor.scss */
+/* line 197, ../scss/components/_editor.scss */
 .fullscreen #wmd-preview {
   top: 53px;
   right: 0;
@@ -1730,23 +1810,32 @@ a.operate-reply {
   border-left: 1px solid #F3F3F0;
   background: #F6F6F3;
   overflow: auto; }
-  /* line 176, ../scss/components/_editor.scss */
+  /* line 206, ../scss/components/_editor.scss */
   .fullscreen #wmd-preview code, .fullscreen #wmd-preview pre {
     background: #F0F0EC; }
-/* line 180, ../scss/components/_editor.scss */
+/* line 210, ../scss/components/_editor.scss */
 .fullscreen .submit {
   right: 0;
   margin: 0;
   padding: 10px 20px;
   border-bottom: 1px solid #F3F3F0; }
-/* line 188, ../scss/components/_editor.scss */
+/* line 216, ../scss/components/_editor.scss */
+.fullscreen #upload-panel {
+  -webkit-box-shadow: 0 4px 16px rgba(0, 0, 0, 0.225);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.225);
+  border-style: solid; }
+/* line 223, ../scss/components/_editor.scss */
 .fullscreen #tab-files {
   position: absolute;
   top: 52px;
-  right: 20px;
+  right: -1px;
   width: 280px;
-  z-index: 1001; }
-/* line 202, ../scss/components/_editor.scss */
+  z-index: 1001;
+  animation: fullscreen-upload 0.5s;
+  -moz-animation: fullscreen-upload 0.5s;
+  -webkit-animation: fullscreen-upload 0.5s;
+  -o-animation: fullscreen-upload 0.5s; }
+/* line 236, ../scss/components/_editor.scss */
 .fullscreen .wmd-edittab,
 .fullscreen .typecho-post-option,
 .fullscreen .title,
@@ -1755,10 +1844,10 @@ a.operate-reply {
 .fullscreen .typecho-head-nav,
 .fullscreen .message {
   display: none; }
-/* line 203, ../scss/components/_editor.scss */
+/* line 243, ../scss/components/_editor.scss */
 .fullscreen .wmd-hidetab {
   display: block; }
-/* line 205, ../scss/components/_editor.scss */
+/* line 244, ../scss/components/_editor.scss */
 .fullscreen .wmd-visualhide,
 .fullscreen #btn-fullscreen-upload {
   visibility: visible; }
@@ -1874,7 +1963,7 @@ a.operate-reply {
   padding-top: 10px;
   border-top: 1px solid #EEE; }
 
-/* line 75, ../scss/components/_timepicker.scss */
+/* line 74, ../scss/components/_timepicker.scss */
 #ui-datepicker-div .ui-datepicker-current,
 #ui-datepicker-div .ui-datepicker-close {
   float: left; }
@@ -2011,7 +2100,7 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item {
 * Extends the .sr-only class to allow the element to be focusable
 * when navigated to via the keyboard: h5bp.com/p
 */
-/* line 31, ../scss/_hidden.scss */
+/* line 30, ../scss/_hidden.scss */
 .sr-only.focusable:active,
 .sr-only.focusable:focus {
   clip: auto;

@@ -311,15 +311,20 @@ abstract class Typecho_Http_Client_Adapter
             $this->path = $params['path'];
         }
 
-        if (!empty($params['query'])) {
-            $this->path .= '?' . $params['query'] . (empty($this->query) ? NULL : '&' . $this->query);
-            $url .= (empty($this->query) ? NULL : '&' . $this->query);
-        } else {
-            $url .= (empty($this->query) ? NULL : '?' . $this->query);
+        $query = empty($params['query']) ? '' : $params['query'];
+
+        if (!empty($this->query)) {
+            $query = empty($query) ? $this->query : '&' . $this->query;
+        }
+
+        if (!empty($query)) {
+            $this->path .= '?' . $query;
+            $params['query'] = $query;
         }
 
         $this->scheme = $params['scheme'];
         $this->port = ('https' == $params['scheme']) ? 443 : 80;
+        $url = Typecho_Common::buildUrl($params);
 
         if (!empty($params['port'])) {
             $this->port = $params['port'];
@@ -370,8 +375,8 @@ abstract class Typecho_Http_Client_Adapter
             }
         }
 
-        $this->reponseBody = implode("\n", $lines);
-        return $this->reponseBody;
+        $this->responseBody = implode("\n", $lines);
+        return $this->responseBody;
     }
 
     /**
@@ -406,7 +411,7 @@ abstract class Typecho_Http_Client_Adapter
      */
     public function getResponseBody()
     {
-        return $this->reponseBody;
+        return $this->responseBody;
     }
 
     /**

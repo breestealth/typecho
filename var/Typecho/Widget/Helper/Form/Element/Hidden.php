@@ -1,4 +1,5 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
  * 隐藏域帮手类
  *
@@ -56,6 +57,6 @@ class Typecho_Widget_Helper_Form_Element_Hidden extends Typecho_Widget_Helper_Fo
      */
     protected function _value($value)
     {
-        $this->input->setAttribute('value', $value);
+        $this->input->setAttribute('value', htmlspecialchars($value));
     }
 }
